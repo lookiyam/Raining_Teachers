@@ -16,6 +16,9 @@ public class Enemy : MonoBehaviour
 
     public int damage;
 
+    //Explotion particle game object
+    public GameObject explosion;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -36,16 +39,22 @@ public class Enemy : MonoBehaviour
     //calculate damage
     void OnTriggerEnter2D(Collider2D hitObject) 
     {
+        //if collide with player
+        //destroy
+        //emit particles explosion, on position and no rotation
         if(hitObject.tag == "Player")
         {
             playerScript.TakeDamage(damage);
+            Instantiate(explosion, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
 
         //If enemy collide with gorund
         //destroy enemy
+        // emit particle explosion
         if(hitObject.tag == "Ground")
         {
+            Instantiate(explosion, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
     }
