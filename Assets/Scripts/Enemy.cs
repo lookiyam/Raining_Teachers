@@ -21,8 +21,8 @@ public class Enemy : MonoBehaviour
     {
         //set speed between min and max
         speed = Random.Range(minSpeed, maxSpeed);
-        //access player scritpt with tag player
-        playerScript = GameObject.FindObjectOfType<Player>();
+        //access player scritpt 
+        playerScript = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
     }
 
     // Update is called once per frame
