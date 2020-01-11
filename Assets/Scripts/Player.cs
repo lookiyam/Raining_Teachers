@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
+    //public variable for Lose Screen
+    public GameObject losePanel;
     //Display Health withing Text
     public Text healthDisplay;
     //create a variable dor rigid body 2d in order to move the player
@@ -87,8 +89,11 @@ public class Player : MonoBehaviour
         //display text whenever player takes damage
         healthDisplay.text = health.ToString();
         //if health <= zero
+        //destroy player
+        //active lose screen
         if(health <=0)
         {
+            losePanel.SetActive(true);
             //destroy the player
             Destroy(gameObject);
         }
