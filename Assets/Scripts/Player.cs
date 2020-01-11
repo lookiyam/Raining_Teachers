@@ -1,9 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+//use UI library
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
+    //Display Health withing Text
+    public Text healthDisplay;
     //create a variable dor rigid body 2d in order to move the player
     Rigidbody2D rb;
     //create reference to Animator
@@ -25,6 +29,9 @@ public class Player : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         //get aimator component
         anim = GetComponent<Animator>();
+        //Ui text read Health value
+        healthDisplay.text = health.ToString();
+
     }
 
     private void Update() 
@@ -77,6 +84,8 @@ public class Player : MonoBehaviour
     public void TakeDamage(int damageAmount)
     {
         health -= damageAmount;
+        //display text whenever player takes damage
+        healthDisplay.text = health.ToString();
         //if health <= zero
         if(health <=0)
         {
