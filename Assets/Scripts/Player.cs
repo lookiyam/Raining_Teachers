@@ -24,9 +24,15 @@ public class Player : MonoBehaviour
     //Add a speed variable, public so that can be modified
     public float speed;
 
-    
     //make a private variable in order to use the animation not only on the fixupdate fuction
     private float input;
+
+    //Public variables for DASH MOVE
+    public float startDashTime;
+    private float dashTime;
+    public float extraSpeed;
+    private bool isDashing;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -67,6 +73,27 @@ public class Player : MonoBehaviour
         else if (input < 0)
         {
             transform.eulerAngles = new Vector3(0, 180, 0);
+        }
+        //Check if player hits SPACE BAR
+        // if SPACE is pressed that means that player is dashing
+        //if he is dashing increase speed and start dash timer
+        if(Input.GetKeyDown(KeyCode.Space) && isDashing == false)
+        {
+            speed += extraSpeed;
+            isDashing = true;
+            dashTime = startDashTime;
+        }
+        //if dashTime is less than 0 that menas that the player is not dashing
+        //if is not dashing decrease speed
+        if (dashTime <= 0 && isDashing == true)
+        {
+            isDashing = false;
+            speed -= extraSpeed;
+        }
+        //
+        else
+        {
+            dashTime -= Time.deltaTime;
         }
     }
 

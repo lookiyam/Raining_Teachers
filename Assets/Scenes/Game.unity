@@ -2678,6 +2678,8 @@ MonoBehaviour:
   healthDisplay: {fileID: 267296852}
   health: 3
   speed: 10
+  startDashTime: 0.1
+  extraSpeed: 25
 --- !u!61 &1839080321
 BoxCollider2D:
   m_ObjectHideFlags: 0
