@@ -39,6 +39,14 @@ public class Enemy : MonoBehaviour
         if(hitObject.tag == "Player")
         {
             playerScript.TakeDamage(damage);
+            Destroy(gameObject);
+        }
+
+        //If enemy collide with gorund
+        //destroy enemy
+        if(hitObject.tag == "Ground")
+        {
+            Destroy(gameObject);
         }
     }
 }
