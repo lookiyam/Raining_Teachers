@@ -15,6 +15,9 @@ public class Player : MonoBehaviour
     //create reference to Animator
     Animator anim;
 
+    //Audio variable
+    AudioSource source;
+
     //variable for health
     public int health;
     
@@ -27,6 +30,8 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //get audio source variable
+        source = GetComponent<AudioSource>();
         //get the rigidbody 2d
         rb = GetComponent<Rigidbody2D>();
         //get aimator component
@@ -85,6 +90,8 @@ public class Player : MonoBehaviour
     // public function in order to calculate the damage within enemy script
     public void TakeDamage(int damageAmount)
     {
+        //play audio source when hitted
+        source.Play();
         health -= damageAmount;
         //display text whenever player takes damage
         healthDisplay.text = health.ToString();
